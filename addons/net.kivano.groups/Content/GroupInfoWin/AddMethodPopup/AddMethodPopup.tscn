@@ -1,120 +1,170 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://addons/net.kivano.groups/Content/GroupInfoWin/AddMethodPopup/AddMethodPopup.gd" type="Script" id=1]
 
-
 [node name="AddMethodPopup" type="WindowDialog"]
 
-anchor/left = 3
-anchor/top = 3
-anchor/right = 3
-anchor/bottom = 3
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 193.0
-margin/top = 75.0
-margin/right = -192.0
-margin/bottom = -62.0
-popup/exclusive = false
-window/title = "Define new group method"
-script/script = ExtResource( 1 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1024.0
+margin_top = -600.0
+margin_right = -638.0
+margin_bottom = -447.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+popup_exclusive = false
+window_title = "Define new group method"
+resizable = false
+script = ExtResource( 1 )
+_sections_unfolded = [ "Anchor", "Margin", "Theme" ]
 
-[node name="methodName" type="TextEdit" parent="."]
+[node name="methodName" type="TextEdit" parent="." index="1"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 7.0
-margin/top = 15.0
-margin/right = 380.0
-margin/bottom = 44.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 18.0
+margin_right = 380.0
+margin_bottom = 51.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = ""
+readonly = false
+highlight_current_line = false
+syntax_highlighting = false
 show_line_numbers = false
 highlight_all_occurrences = false
-caret/block_caret = false
-caret/caret_blink = false
-caret/caret_blink_speed = 0.65
+override_selected_font_color = false
+context_menu_enabled = true
+smooth_scrolling = false
+v_scroll_speed = 80.0
+hiding_enabled = 0
+caret_block_mode = false
+caret_blink = false
+caret_blink_speed = 0.65
+caret_moving_by_right_click = true
+_sections_unfolded = [ "Rect" ]
 
-[node name="methodParams" type="TextEdit" parent="."]
+[node name="methodParams" type="TextEdit" parent="." index="2"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 7.0
-margin/top = 59.0
-margin/right = 380.0
-margin/bottom = 96.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 7.0
+margin_top = 72.0
+margin_right = 380.0
+margin_bottom = 105.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = ""
+readonly = false
+highlight_current_line = false
+syntax_highlighting = false
 show_line_numbers = false
 highlight_all_occurrences = false
-caret/block_caret = false
-caret/caret_blink = false
-caret/caret_blink_speed = 0.65
+override_selected_font_color = false
+context_menu_enabled = true
+smooth_scrolling = false
+v_scroll_speed = 80.0
+hiding_enabled = 0
+caret_block_mode = false
+caret_blink = false
+caret_blink_speed = 0.65
+caret_moving_by_right_click = true
+_sections_unfolded = [ "Rect" ]
 
-[node name="titleMethodName" type="Label" parent="."]
+[node name="titleMethodName" type="Label" parent="." index="3"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 3.0
-margin/right = 91.0
-margin/bottom = 17.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2.0
+margin_top = -5.0
+margin_right = 101.0
+margin_bottom = 17.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "Method Name"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="titleParams" type="Label" parent="."]
+[node name="titleParams" type="Label" parent="." index="4"]
 
-hint/tooltip = "Only number of paramaters will be taken into account during validation"
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 44.0
-margin/right = 91.0
-margin/bottom = 58.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2.0
+margin_top = 49.0
+margin_right = 233.0
+margin_bottom = 71.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "Parameters (separate with comma)"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="SaveBtn" type="Button" parent="."]
+[node name="SaveBtn" type="Button" parent="." index="5"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 210.0
-margin/top = 100.0
-margin/right = 278.0
-margin/bottom = 132.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 11.0
+margin_top = -37.0
+margin_right = 79.0
+margin_bottom = -5.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+group = null
 text = "Save"
 flat = false
+align = 1
 
-[node name="cancelBtn" type="Button" parent="."]
+[node name="cancelBtn" type="Button" parent="." index="6"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 120.0
-margin/top = 100.0
-margin/right = 188.0
-margin/bottom = 132.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -78.0
+margin_top = -37.0
+margin_right = -10.0
+margin_bottom = -5.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+group = null
 text = "Cancel"
 flat = false
+align = 1
 
 [connection signal="pressed" from="SaveBtn" to="." method="_on_SaveBtn_pressed"]
 

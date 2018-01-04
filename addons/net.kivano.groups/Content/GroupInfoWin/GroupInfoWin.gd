@@ -33,11 +33,9 @@ var currentGroupID;
 func _notification(what):
 	if (what == NOTIFICATION_INSTANCED):
 		methodList = get_node("methodList");
-		get_node("description").set_readonly(true);
 	elif(what == NOTIFICATION_READY):
 		 groupManagerLogicRoot = get_node(path2GroupManagerRoot);
-		
-		
+
 ##################################################################################
 #########                       Getters and Setters                      #########
 ##################################################################################
@@ -46,7 +44,7 @@ func showGroup(inGroup, group2SceneValidationInfo):
 	#
 	currentGroupID = inGroup;
 	get_node("members").clear();
-	get_node("titleDesc").set_text("Group: " + currentGroupID);
+	get_node("titleDesc").set_text("Description of '%s':" % currentGroupID);
 	get_node("methodList").clear();
 	get_node("description").set_text("");
 	
@@ -67,9 +65,6 @@ func showGroup(inGroup, group2SceneValidationInfo):
 	popup();
 
 func addScene2SceneList(inGroup, inScene):
-	print("-------Adding scene to scene list-------");
-	print("scene name: ", inScene.filePath, " group: ", inGroup);
-	
 	var validationStatus = groupManagerLogicRoot.getValidationStatus4Scene(inGroup, inScene.filePath)
 	get_node("members").add_item(inScene.filePath);
 	var lastItemIdx =get_node("members").get_item_count() - 1;
@@ -95,9 +90,6 @@ func addScene2SceneList(inGroup, inScene):
 ##################################################################################
 #########                       Connected Signals                        #########
 ##################################################################################
-func _on_editDescriptionBtn_pressed():
-	get_node("description").set_readonly(false);
-
 func _on_addMethodBtn_pressed():
 	get_node("AddMethodPopup").popup();
 	

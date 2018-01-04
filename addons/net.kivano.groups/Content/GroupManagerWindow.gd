@@ -16,7 +16,7 @@ extends Control
 ##################################################################################
 #####  Variables (Constants, Export Variables, Node Vars, Normal variables)  #####
 ######################### var myvar setget myvar_set,myvar_get ###################
-const PATH_2_PLUGIN_DATA_FILE = "res://addons/group_manager.dat";
+const PATH_2_PLUGIN_DATA_FILE = "res://addons/net.kivano.groups/group_manager.dat";
 
 const GROUP_STATUS_NOT_ADDED_2_MANAGER = 1;
 const GROUP_STATUS_NOT_VALIDATE = 2;
@@ -25,9 +25,9 @@ const GROUP_STATUS_VALIDATE = 3;
 const VALIDATION_STAT_4_SCENE_OK = 1;
 const VALIDATION_STAT_4_SCENE_ERROR = 2;
 
-const MSG_NOT_ADDED_2_MANAGER = "Group Manager don't know this group, double click to fill info";
-const MSG_SCN_NOT_VALIDATE = "Some scenes that are part of this group don't validate for required methods";
-const MSG_GROUP_OK = "No problem here";
+const MSG_NOT_ADDED_2_MANAGER = "Group Manager doesn't know this group, double click to fill info.";
+const MSG_SCN_NOT_VALIDATE = "Some scenes that are part of this group don't validate for required methods.";
+const MSG_GROUP_OK = "No problem here.";
 
 const ICO_OK      = preload("res://addons/net.kivano.groups/Content/assets/ok_ico.png");
 const ICO_ERROR   = preload("res://addons/net.kivano.groups/Content/assets/error_ico.png");
@@ -53,8 +53,7 @@ func _notification(what):
 		pass #only parts that are dependent on outside world (on theparents etc/also called when reparented) 
 
 func _enter_tree():
-	pass
-#	reset();
+	call_deferred("reset");
 
 func reset():
 	uiGroupList.clear()
@@ -83,11 +82,7 @@ func getGroupValidationStatus(inGroup):
 
 func getValidationStatus4Scene(inGroup, inSceneFilename):
 	var sceneValidationsList = group2SceneMap[inGroup];
-	print("sceneValidationsList:", sceneValidationsList)
 	for sceneValdationData in sceneValidationsList:
-		print(sceneValdationData.get_type());
-#		print(typeof(sceneValdationData))
-#		print(sceneValdationData.filepath)
 		if(sceneValdationData.getFilePath()==inSceneFilename):
 			if(sceneValdationData.notValidatingMethods.size()>0):
 				return VALIDATION_STAT_4_SCENE_ERROR;
@@ -193,11 +188,10 @@ func fetchAllSubfolders(inDirCursor, inOutSubfolderList, inOutScenesList):
 		if inDirCursor.current_is_dir():
 			if(currentFile!="..") && (currentFile!="."):
 				inOutSubfolderList.append(inDirCursor.get_current_dir()+"/"+currentFile);
-		elif((currentFile.extension()=="tscn") || (currentFile.extension()=="scn") || (currentFile.extension()=="xscn")):
+		elif((currentFile.get_extension()=="tscn") || (currentFile.get_extension()=="scn") || (currentFile.get_extension()=="xscn")):
 			var sceneFilePath = inDirCursor.get_current_dir()+"/"+currentFile;
 			sceneFilePath = sceneFilePath.replace("///", "//")
 			if(sceneFilePath!=null)&&(sceneFilePath!=""):
-#				print("adding scn: ", currentFile)
 				inOutScenesList.append(sceneFilePath);
 			
 		currentFile = inDirCursor.get_next();
@@ -236,8 +230,8 @@ func assignScenes2Group():
 
 func internalFillGroupList():
 	var groups = group2SceneMap.keys();
+	groups.sort()
 	for group in groups:
-		
 		uiGroupList.add_item(group);
 		var currentItemIdx = uiGroupList.get_item_count()-1;
 		var status =  getGroupValidationStatus(group);
@@ -255,7 +249,6 @@ func checkGroupStatus(inGroup, inSceneNode, inSceneFilename):
 	var validationinfo = findSceneValidationInfo(inGroup, inSceneFilename);
 	if(hasDescription4Group(inGroup)):
 		
-		#
 		var hasAllRequiredMethods = true;
 		var methods2Check = getOnlyGroupMethodNamesInList(inGroup)
 		
@@ -263,13 +256,8 @@ func checkGroupStatus(inGroup, inSceneNode, inSceneFilename):
 			if(!doSceneHaveMethod(inSceneNode, method)): 
 				validationinfo.addNotValidatingMethod(method);
 				hasAllRequiredMethods = false;
-#				get_node("debug").add_text(inSceneFilename + " dont have " + method + "\n")
-#			else: 
-#				get_node("debug").add_text(inSceneFilename + " have " + method + "\n")
-		#
 		if(hasAllRequiredMethods):
 			setGroupValidationStatus(inGroup, GROUP_STATUS_VALIDATE);
-#			get_node("debug").add_text(inGroup + " setting status validate " + "\n")
 		else:
 			setGroupValidationStatus(inGroup, GROUP_STATUS_NOT_VALIDATE);
 			
@@ -292,7 +280,7 @@ func doSceneHaveMethod(inScn, inMethod):
 func saveDict2File(inDict, inFilePath):
 	var saveGameFile = File.new();
 	saveGameFile.open(inFilePath, File.WRITE);
-	saveGameFile.store_line(inDict.to_json());
+	saveGameFile.store_line(to_json(inDict));
 	saveGameFile.close();
 
 func loadDictFromFile(inFilePath):
@@ -302,9 +290,7 @@ func loadDictFromFile(inFilePath):
 		return {};
 	
 	fileWithData.open(inFilePath, File.READ);
-	while (!fileWithData.eof_reached()):
-		var line = fileWithData.get_line();
-		loadedDictData.parse_json(line);
+	loadedDictData = parse_json(fileWithData.get_line());
 	fileWithData.close();
 	
 	return loadedDictData;

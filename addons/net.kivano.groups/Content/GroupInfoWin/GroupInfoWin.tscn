@@ -1,199 +1,228 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://addons/net.kivano.groups/Content/GroupInfoWin/GroupInfoWin.gd" type="Script" id=1]
 [ext_resource path="res://addons/net.kivano.groups/Content/GroupInfoWin/AddMethodPopup/AddMethodPopup.tscn" type="PackedScene" id=2]
 
+[node name="GroupDesc" type="WindowDialog" index="0"]
 
-[node name="GroupDesc" type="WindowDialog"]
-
-anchor/left = 3
-anchor/top = 3
-anchor/right = 3
-anchor/bottom = 3
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 258.0
-margin/top = 268.0
-margin/right = -330.0
-margin/bottom = -288.0
-popup/exclusive = false
-window/title = "Group"
-script/script = ExtResource( 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 258.0
+margin_bottom = 496.0
+rect_min_size = Vector2( 258, 492 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+popup_exclusive = false
+window_title = "Group"
+resizable = false
+script = ExtResource( 1 )
+_sections_unfolded = [ "Rect", "Theme" ]
 path2GroupManagerRoot = NodePath("..")
 
-[node name="titleDesc" type="Label" parent="."]
+[node name="titleDesc" type="Label" parent="." index="1"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 1.0
-margin/top = 13.0
-margin/right = 67.0
-margin/bottom = 27.0
-text = "Description:"
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 7.0
+margin_right = 86.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "Description of 'group':"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Margin" ]
 
-[node name="description" type="TextEdit" parent="."]
+[node name="description" type="TextEdit" parent="." index="2"]
 
-anchor/right = 1
-hint/tooltip = "Describe what is purpose of this group here."
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 4.0
-margin/top = 30.0
-margin/right = 6.0
-margin/bottom = 155.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 34.0
+margin_right = -5.0
+margin_bottom = 154.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = ""
+readonly = false
+highlight_current_line = false
 syntax_highlighting = false
 show_line_numbers = false
 highlight_all_occurrences = false
-caret/block_caret = false
-caret/caret_blink = false
-caret/caret_blink_speed = 0.65
+override_selected_font_color = false
+context_menu_enabled = true
+smooth_scrolling = false
+v_scroll_speed = 80.0
+hiding_enabled = 0
+caret_block_mode = false
+caret_blink = false
+caret_blink_speed = 0.65
+caret_moving_by_right_click = true
+_sections_unfolded = [ "Margin", "Rect" ]
 
-[node name="titleMethods" type="Label" parent="."]
+[node name="titleMethods" type="Label" parent="." index="3"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 163.0
-margin/right = 121.0
-margin/bottom = 177.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 161.0
+margin_right = 129.0
+margin_bottom = 183.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "Required Methods:"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Margin" ]
 
-[node name="methodList" type="ItemList" parent="."]
+[node name="methodList" type="ItemList" parent="." index="4"]
 
-anchor/right = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 2.0
-margin/top = 180.0
-margin/right = 5.0
-margin/bottom = 293.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 188.0
+margin_right = -5.0
+margin_bottom = 308.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+items = [  ]
+select_mode = 0
+icon_mode = 1
+_sections_unfolded = [ "Hint", "Margin", "Rect" ]
 
-[node name="editDescriptionBtn" type="Button" parent="."]
+[node name="members" type="ItemList" parent="." index="5"]
 
-anchor/left = 1
-anchor/right = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 117.0
-margin/top = 10.0
-margin/right = 5.0
-margin/bottom = 30.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 338.0
+margin_right = -5.0
+margin_bottom = 462.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+items = [  ]
+select_mode = 0
+icon_mode = 1
+_sections_unfolded = [ "Hint", "Margin", "Rect" ]
+
+[node name="addMethodBtn" type="Button" parent="." index="6"]
+
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -49.0
+margin_top = 159.0
+margin_right = -29.0
+margin_bottom = 181.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Edit description"
-flat = false
-
-[node name="addMethodBtn" type="Button" parent="."]
-
-anchor/left = 1
-anchor/right = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 30.0
-margin/top = 160.0
-margin/right = 10.0
-margin/bottom = 180.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
+group = null
 text = "+"
 flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
 
-[node name="removeMethod" type="Button" parent="."]
+[node name="removeMethod" type="Button" parent="." index="7"]
 
-anchor/left = 1
-anchor/right = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 56.0
-margin/top = 160.0
-margin/right = 36.0
-margin/bottom = 180.0
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -25.0
+margin_top = 159.0
+margin_right = -5.0
+margin_bottom = 181.0
+rect_min_size = Vector2( 20, 20 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+group = null
 text = "-"
 flat = false
+align = 1
+_sections_unfolded = [ "Rect" ]
 
-[node name="saveBtn" type="Button" parent="."]
+[node name="saveBtn" type="Button" parent="." index="8"]
 
-anchor/left = 1
-anchor/top = 1
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 124.0
-margin/top = 248.0
-margin/right = 1.0
-margin/bottom = 219.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -108.0
+margin_top = -31.0
+margin_right = -10.0
+margin_bottom = -9.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+group = null
 text = "Save Changes"
 flat = false
+align = 1
+_sections_unfolded = [ "Margin", "Rect" ]
 
-[node name="AddMethodPopup" parent="." instance=ExtResource( 2 )]
+[node name="AddMethodPopup" parent="." index="9" instance=ExtResource( 2 )]
 
-visibility/visible = false
+visible = false
 
-[node name="titleMembers" type="Label" parent="."]
+[node name="titleMembers" type="Label" parent="." index="10"]
 
-anchor/top = 1
-anchor/bottom = 1
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 1.0
-margin/top = 228.0
-margin/right = 122.0
-margin/bottom = 214.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 314.0
+margin_right = 121.0
+margin_bottom = 336.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 text = "Member scenes:"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-
-[node name="members" type="ItemList" parent="."]
-
-anchor/top = 1
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 3.0
-margin/top = 211.0
-margin/right = 4.0
-margin/bottom = 8.0
-
-[connection signal="pressed" from="editDescriptionBtn" to="." method="_on_editDescriptionBtn_pressed"]
 
 [connection signal="pressed" from="addMethodBtn" to="." method="_on_addMethodBtn_pressed"]
 

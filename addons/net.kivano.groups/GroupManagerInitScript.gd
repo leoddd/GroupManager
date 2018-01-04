@@ -16,4 +16,4 @@ func _exit_tree():
     # Clean-up of the plugin goes here
     # Remove the scene from the docks:
     remove_control_from_docks( dock ) # Remove the dock
-    dock.free() # Erase the control from the memory
+    dock.queue_free() # Erase the control from the memory
